@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baby Activity Logger</title>
+    <title>Babiron Logger</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="logger-container">
-        <h1>Baby Activity Logger</h1>
+        <h1>Šta je sad bilo Savo?</h1>
         
         <div class="main-buttons">
             <button id="diaper-btn" class="big-button">🧻</button>
@@ -16,7 +16,7 @@
         </div>
 
         <div id="diaper-options" class="options hidden">
-            <h2>Select Activity</h2>
+            <h2>Jel se usro, upišo, il oba?</h2>
             <div class="activity-buttons">
                 <button id="poop-btn" class="activity-button">💩</button>
                 <button id="pee-btn" class="activity-button">⛲</button>
@@ -24,7 +24,7 @@
             </div>
 
             <div id="poop-options" class="sub-options hidden">
-                <h3>Select Poop Color</h3>
+                <h3>Koje boje mu je kaka bila?</h3>
                 <div class="color-buttons">
                     <button class="color-button poop-color" data-color="brown">🟤</button>
                     <button class="color-button poop-color" data-color="green">🟢</button>
@@ -33,36 +33,36 @@
             </div>
 
             <div id="pee-options" class="sub-options hidden">
-                <h3>Select Pee Color</h3>
+                <h3>Koje boje mu je pišaćka bila?</h3>
                 <div class="color-buttons">
-                    <button class="color-button pee-color" data-color="dark-yellow">🟤</button>
+                    <button class="color-button pee-color" data-color="dark-yellow">🟠</button>
                     <button class="color-button pee-color" data-color="yellow">🟡</button>
-                    <button class="color-button pee-color" data-color="clear">🟢</button>
+                    <button class="color-button pee-color" data-color="clear">⚪️</button>
                 </div>
             </div>
 
-            <button id="log-diaper-btn" class="log-button hidden">Log Diaper Change</button>
+            <button id="log-diaper-btn" class="log-button hidden">Zabeleži promenu pampersa</button>
         </div>
 
         <div id="boob-options" class="options hidden">
-            <h2>Breastfeeding</h2>
+            <h2>Siskarenje</h2>
             <div id="stopwatch" class="stopwatch">00:00</div>
-            <button id="start-boob-btn" class="log-button">Start Feeding</button>
-            <button id="stop-boob-btn" class="log-button danger hidden">Stop Feeding</button>
+            <button id="start-boob-btn" class="log-button">Započni siskanje!</button>
+            <button id="stop-boob-btn" class="log-button danger hidden">Mama neću više!</button>
         </div>
 
         <div id="log-container" class="log-container">
             <div class="tab-buttons">
-                <button id="diaper-tab" class="tab-button active">Diaper Changes</button>
-                <button id="feeding-tab" class="tab-button">Feedings</button>
+                <button id="diaper-tab" class="tab-button active">Pampers biznis</button>
+                <button id="feeding-tab" class="tab-button">Sisanje životodavkinje</button>
             </div>
             <div id="diaper-log" class="log-table">
                 <table>
                     <thead>
                         <tr>
-                            <th>Time</th>
-                            <th>Type</th>
-                            <th>Details</th>
+                            <th>Vreme</th>
+                            <th>Tip</th>
+                            <th>Detalji</th>
                         </tr>
                     </thead>
                     <tbody id="diaper-log-body"></tbody>
@@ -72,8 +72,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Start Time</th>
-                            <th>Duration</th>
+                            <th>Početak</th>
+                            <th>Trajanje</th>
                         </tr>
                     </thead>
                     <tbody id="feeding-log-body"></tbody>
