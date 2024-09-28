@@ -51,7 +51,35 @@
             <button id="stop-boob-btn" class="log-button danger hidden">Stop Feeding</button>
         </div>
 
-        <div id="log-container" class="log-container"></div>
+        <div id="log-container" class="log-container">
+            <div class="tab-buttons">
+                <button id="diaper-tab" class="tab-button active">Diaper Changes</button>
+                <button id="feeding-tab" class="tab-button">Feedings</button>
+            </div>
+            <div id="diaper-log" class="log-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Type</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="diaper-log-body"></tbody>
+                </table>
+            </div>
+            <div id="feeding-log" class="log-table hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Start Time</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feeding-log-body"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>

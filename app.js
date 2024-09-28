@@ -66,7 +66,7 @@ function logDiaperChange() {
         return;
     }
 
-    const timestamp = new Date().toLocaleString();
+    const timestamp = new Date();
     let log;
 
     if (type === 'both') {
@@ -117,8 +117,8 @@ function stopFeeding() {
     const duration = Math.round((endTime - feedingStartTime) / 1000 / 60); // minutes
     const log = {
         type: 'Breastfeeding',
-        startTime: feedingStartTime.toLocaleString(),
-        endTime: endTime.toLocaleString(),
+        startTime: feedingStartTime,
+        endTime: endTime,
         duration: duration
     };
     saveLog(log);
@@ -148,19 +148,60 @@ function saveLog(log) {
 
 // Update log display
 function updateLogDisplay(log) {
-    const logContainer = document.getElementById('log-container');
-    const logEntry = document.createElement('div');
-    logEntry.classList.add('log-entry');
-    
     if (log.type === 'Breastfeeding') {
-        logEntry.innerHTML = `<strong>${log.type}</strong>: ${log.duration} minutes (${log.startTime})`;
-    } else if (log.type === 'Both') {
-        logEntry.innerHTML = `<strong>Poop and Pee</strong>: Poop - ${log.poopColor}, Pee - ${log.peeColor} (${log.timestamp})`;
+        const tableBody = document.getElementById('feeding-log-body');
+        const row = tableBody.insertRow(0);
+        row.innerHTML = `
+            <td>${formatDate(log.startTime)}</td>
+            <td>${log.duration} minutes</td>
+        `;
     } else {
-        logEntry.innerHTML = `<strong>${log.type}</strong>: ${log.color} (${log.timestamp})`;
+        const tableBody = document.getElementById('diaper-log-body');
+        const row = tableBody.insertRow(0);
+        row.innerHTML = `
+            <td>${formatDate(log.timestamp)}</td>
+            <td>${log.type}</td>
+            <td>${getColorEmoji(log)}</td>
+        `;
     }
-    
-    logContainer.insertBefore(logEntry, logContainer.firstChild);
+}
+
+function formatDate(date) {
+    return new Date(date).toLocaleString('en-US', { 
+        month: 'short', 
+        day: 'numeric', 
+        hour: 'numeric', 
+        minute: 'numeric', 
+        hour12: true 
+    });
+}
+
+function getColorEmoji(log) {
+    const colorMap = {
+        'brown': '🟤',
+        'green': '🟢',
+        'yellow': '🟡',
+        'dark-yellow': '🟤',
+        'clear': '🟢'
+    };
+
+    if (log.type === 'Both') {
+        return `${colorMap[log.poopColor]} ${colorMap[log.peeColor]}`;
+    } else {
+        return colorMap[log.color];
+    }
+}
+
+// Tab switching
+document.getElementById('diaper-tab').addEventListener('click', () => switchTab('diaper'));
+document.getElementById('feeding-tab').addEventListener('click', () => switchTab('feeding'));
+
+function switchTab(tabName) {
+    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.log-table').forEach(table => table.classList.add('hidden'));
+
+    document.getElementById(`${tabName}-tab`).classList.add('active');
+    document.getElementById(`${tabName}-log`).classList.remove('hidden');
 }
 
 // Load logs on page load
