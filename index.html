@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Activity Logger</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="logger-container">
+        <h1>Baby Activity Logger</h1>
+        
+        <div class="main-buttons">
+            <button id="diaper-btn" class="big-button">🧻</button>
+            <button id="boob-btn" class="big-button">🤱</button>
+        </div>
+
+        <div id="diaper-options" class="options hidden">
+            <h2>Select Activity</h2>
+            <div class="activity-buttons">
+                <button id="poop-btn" class="activity-button">💩</button>
+                <button id="pee-btn" class="activity-button">⛲</button>
+                <button id="both-btn" class="activity-button">💩⛲</button>
+            </div>
+
+            <div id="poop-options" class="sub-options hidden">
+                <h3>Select Poop Color</h3>
+                <div class="color-buttons">
+                    <button class="color-button poop-color" data-color="brown">🟤</button>
+                    <button class="color-button poop-color" data-color="green">🟢</button>
+                    <button class="color-button poop-color" data-color="yellow">🟡</button>
+                </div>
+            </div>
+
+            <div id="pee-options" class="sub-options hidden">
+                <h3>Select Pee Color</h3>
+                <div class="color-buttons">
+                    <button class="color-button pee-color" data-color="dark-yellow">🟤</button>
+                    <button class="color-button pee-color" data-color="yellow">🟡</button>
+                    <button class="color-button pee-color" data-color="clear">🟢</button>
+                </div>
+            </div>
+
+            <button id="log-diaper-btn" class="log-button hidden">Log Diaper Change</button>
+        </div>
+
+        <div id="boob-options" class="options hidden">
+            <h2>Breastfeeding</h2>
+            <div id="stopwatch" class="stopwatch">00:00</div>
+            <button id="start-boob-btn" class="log-button">Start Feeding</button>
+            <button id="stop-boob-btn" class="log-button danger hidden">Stop Feeding</button>
+        </div>
+
+        <div id="log-container" class="log-container"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
